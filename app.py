@@ -12,7 +12,7 @@ db = SQLAlchemy(app)
 
 @app.route("/")
 def main():
-	return render_template("homePage.html")
+	return render_template("newHomePage.html")
 
 
 # p and q must be prime numbers that are relatively prime to each other, and cannot be the same numberr. Their product is n, which one part of the public key.
@@ -111,75 +111,75 @@ def encrypt():
 
 
 	#numbers = None
-	if request.method == 'POST':
-		numbers = request.form
+	#if request.method == 'POST':
+	#	numbers = request.form
 
 
-	print(numbers)
+	#print(numbers)
 
-	e = numbers.get('e', -1)
-	m = number.get('m', -1)
-	n = number.get('n' , -1)
+	#e = numbers.get('e', -1)
+	#m = number.get('m', -1)
+	#n = number.get('n' , -1)
 	
 
 	
 
 
-	c = cal(e, m, n)
+	#c = cal(e, m, n)
 
-	ENC = EncryptionDdata(Sea = c, Emm = m, Enn = n, Eee = e)
+	#ENC = EncryptionDdata(Sea = c, Emm = m, Enn = n, Eee = e)
 
-	db.session.add(ENC)
-	db.commit()
+	#db.session.add(ENC)
+	#db.commit()
 
 
-	return render_template('encryptData.html', c = c)
+	return render_template('encryptData.html')
 
 
 @app.route('/decryptData', methods = ['POST', 'GET'])
 def decrypt():
 	
 	#number = None
-	if request.method == 'POST':
-		numbers = request.form
+	#if request.method == 'POST':
+	#	numbers = request.form
 
 
-	print(numbers)
+	#print(numbers)
 
 
 
-	c = numbers.get('c', -1)
-	e = numbers.get('e', -1)
-	p = numbers.get('p', -1)
-	q = numbers.get('q', -1)
+	#c = numbers.get('c', -1)
+	#e = numbers.get('e', -1)
+	#p = numbers.get('p', -1)
+	#q = numbers.get('q', -1)
 
-	if p == q:
-		return render_template('p_q_coPrime_error.html')
+	#if p == q:
+	#	return render_template('p_q_coPrime_error.html')
 
 	# if e is not coprime to phiN
-		return render_template('e_phiN_coprime_error.html')
+	#	return render_template('e_phiN_coprime_error.html')
 
 
 
 
-	n = p * q
+	#n = p * q
 
-	phiN = (p - 1) * (q - 1)
+	#phiN = (p - 1) * (q - 1)
 
 
 	#(d)(e) triple bar 1 mod phiN
 	
-	d = None
-	m = None
-	d = modinv(e, phiN)
-	m = cal(d, c, phiN)
+	#d = None
+	#m = None
+	#d = modinv(e, phiN)
+	#m = cal(d, c, phiN)
 
-	DEC = DecryptionData(Sea = c, Pee = p, Quu = q, Ee = e, Dee = d)
-	db.session.add(DEC)
-	db.session.commit()	
+	#DEC = DecryptionData(Sea = c, Pee = p, Quu = q, Ee = e, Dee = d)
+	#db.session.add(DEC)
+	#db.session.commit()	
 
 
-	return render_template('decryptData.html' , m = m, d = d)
+	return render_template('decryptData.html')
 
 @app.route('/accessDB' , methods = ['POST', 'GET'])
 def accessDB():

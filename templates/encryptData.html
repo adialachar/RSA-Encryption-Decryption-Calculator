@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 
 	<html>
-	
+		<head>
+			<link rel="stylesheet" type="text/css" href="../static/style.css">
+		</head>	
 		<body>
+			      <header id="main-header">
+                        <div class="container">
+                                <h1> RSA Encryption / Decryption Calculator </h1>
+                        </div>
+                </header>
+
+                <nav id="navbar">
+                        <div class="container">
+                                <ul>
+                                        <li><a href="#"> Home </a></li>
+                                        <li><a href="http://127.0.0.1:5000/encryptData">Encryption Calculator</a></li>
+                                        <li><a href="#">Decryption Calculator</a></li>
+                                        <li><a href="#">Further Reading</a></li>
+                                </ul>
+                        </div>
+                </nav>
 
 			encrypt data
+			<form class="my-form" action = "http://127.0.0.1:5000/encryptionCalculated.html" method = 'POST'>
+
+
+
+                        m: <br>
+                        <input = "text", name = 'm'><br>
+
+                        e: <br>
+                        <input = "text", name = 'e'><br>
+
+                        n: <br>
+                        <input = "text", name = 'n'><br>
+
+                        <p><input type = "submit" value = "submit encryption values" /> </p>
+
+                </form>
+
 
 		</body>
 
