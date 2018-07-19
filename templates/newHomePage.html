@@ -36,7 +36,44 @@
 				<h1> Origins </h1>
 					<p> RSA was made in Israel </p>
 				<h1> How does it work </h1>
-					<p> p, q, n, phiN, d, e </p>
+					<p> p, q, n, phiN, d, e
+						There are two parts to RSA Encryption: the Public Key and the Private key
+
+						The Public Key is used to encrypt information, while the private key is used to decrypt information. The information necessary to build the public key is usually publically available , while the private key is difficult to calculate and cannot be found easily. 
+
+
+						Before we get into the weeds, lets define all of the numbers involved in RSA Encryption and Decryption
+						
+						p: a prime number
+			
+						q: a prime number that is different from p
+
+						n: the product of p and q
+
+						phiN: the product of (p -1) and (q - 1)
+
+						e: A number that is co-prime to phiN
+
+						d: The Private Key
+
+						c: The variable usually used to represent the encrypted number
+
+						m: The variable usually used to represend the un-encrypted or decrypted number
+
+
+						Now that we know all of the numbers involved, we can start defining what the Public Key and Private Key are
+
+
+						The Public Key is made up of two parts: n and e, usually written as (n, e)
+						
+
+						The Private Key is just made up of one number: d
+			
+						d is a number that requires 3 other numbers to solve for. These numbers are p,q, and e.
+
+
+
+ </p>
 				<h1> Where is it used today </h1>
 					<p> All sorts of stuff </p>
 				<h1> Why is encryption even important </h1>
