@@ -14,7 +14,7 @@
                 <nav id="navbar">
                         <div class="container">
                                 <ul>
-                                        <li><a href="#"> Home </a></li>
+                                        <li><a href="http://127.0.0.1:5000/"> Home </a></li>
                                         <li><a href="http://127.0.0.1:5000/encryptData">Encryption Calculator</a></li>
                                         <li><a href="http://127.0.0.1:5000/decryptData">Decryption Calculator</a></li>
                                         <li><a href="#">Further Reading</a></li>
@@ -23,12 +23,12 @@
                 </nav>
 
                         Decrypt data
-                        <form class="my-form" action = "http://127.0.0.1:5000/encryptionCalculated.html" method = 'POST'>
+                        <form class="my-form" action = "http://127.0.0.1:5000/decryptData" method = 'POST'>
 
 			
 
                  	p: <br>
-                        <input = "text", name = 'q'><br>
+                        <input = "text", name = 'p'><br>
 
                         q: <br>
                         <input = "text", name = 'q'><br>
@@ -43,6 +43,28 @@
                         <p><input type = "submit" value = "submit Decryption values" /> </p>
 
                 </form>
+		
+
+		<div class="displayContainer">
+		<div class="sidebar">
+			
+		
+			{% if DEC is not none %}
+				{{DEC.Dee }} is the secret key
+				{{DEC.Emm }} is the decrypted value		
+			{%endif%}
+
+
+
+		</div>
+		</div>
+
+
+
+
+
+
+
 
 
                 </body>

@@ -56,14 +56,15 @@ class EncryptionData:
 
 	def __init__(self, m, n, e):
 		
-		Emm = m
-		Enn = n
-		Eee = e
+		self.Emm = m
+		self.Enn = n
+		self.Eee = e
 
 		#Calculating C
-		Sea  = cal(e, m, n)
-
-
+		self.Sea  = cal(int(e), int(m), int(n))
+		print("Hi im in clfunc.py")
+		print(self.Sea)
+		print("Done")
 	def getC():
 		return Sea
 
@@ -72,7 +73,7 @@ class EncryptionData:
 		#(n, e)
 		publicKey = [ Enn, Eee]
 		return publicKey
-	def isAllOK():
+	def isAllOk():
 	
 		if Sea > 0 and Emm > 0 and Enn > 0 and Eee > 0:
 			return True
@@ -95,26 +96,31 @@ class DecryptionData:
 
 	def __init__(self, p, q, e, c):
 
-		Sea = c
-		Pee = p
-		Quu = q
-		Eee = e
+		self.Sea = c
+		self.Pee = p
+		self.Quu = q
+		self.Eee = e
 		
 
-		#n = p * q
+		n = int(p) * int(q)
 
-		phiN = (p - 1) * (q - 1)
+		phiN = (int(p) - 1) * (int(q) - 1)
 
 
 		#(d)(e) triple bar 1 mod phiN
 	
 		d = None
 		m = None
-		d = modinv(e, phiN)
-		m = cal(d, c, phiN)
+		d = modinv(int(e), int(phiN))
 
-		Dee = d
-		Emm = m
+		print (c)
+		print (d)
+		print(phiN)
+
+		m = cal(int(d), int(c),int(n))
+
+		self.Dee = d
+		self.Emm = m
 
 	
 	def getPrivateKey():

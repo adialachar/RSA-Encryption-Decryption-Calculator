@@ -4,8 +4,9 @@ import primefac
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 db = SQLAlchemy(app)
-
-
+import clfunc
+#from clfunc import EncryptionData
+#from clfunc import cal
 
 
 #app = Flask(__name__)
@@ -66,8 +67,8 @@ def encrypt():
 		print(numbers)
 
 		e = numbers.get('e', -1)
-		m = number.get('m', -1)
-		n = number.get('n' , -1)
+		m = numbers.get('m', -1)
+		n = numbers.get('n' , -1)
 	
 
 	
@@ -75,14 +76,17 @@ def encrypt():
 
 	#c = cal(e, m, n)
 
-		ENC = EncryptionData(Sea = c, Emm = m, Enn = n, Eee = e)
-
+		ENC = clfunc.EncryptionData(m,n,e)
+		print(ENC.Sea)
+		print(ENC.Emm)
+		print(ENC.Enn)
+		print(ENC.Eee)
 	#db.session.add(ENC)
 	#db.commit()
-		isallOk = ENC.isAllOk()
+		isallOk = ENC.isAllOk
 
 		return render_template('encryptData.html', ENC = ENC, isallOk = isAllOk)
-	return render_template('encryptData.html')
+	return render_template('encryptData.html', ENC = ENC, isAllOk = isAllOk)
 
 @app.route('/decryptData', methods = ['POST', 'GET'])
 def decrypt():
@@ -121,10 +125,10 @@ def decrypt():
 
 
 
-		DEC = DecryptionData(Sea = c, Pee = p, Quu = q, Ee = e, Dee = d)
+		DEC = clfunc.DecryptionData(p,q,e,c)
 	#db.session.add(DEC)
 	#db.session.commit()	
-		isAllOk = DEC.isAllOk()
+		isAllOk = DEC.isAllOk
 
 		return render_template('decryptData.html', DEC = DEC, isAllOk = isAllOk)
 	return render_template('decryptData.html', DEC = DEC, isAllOk = isAllOk)
