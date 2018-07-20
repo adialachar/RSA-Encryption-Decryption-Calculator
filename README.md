@@ -35,4 +35,4 @@ In the future I would like to
 
 3. Improve the look of the website using tools like JavaScript, AJAX, and jQuery
 
-
+4. Add the ability to encrypt phrases of words to simulate how passwords are encrypted
