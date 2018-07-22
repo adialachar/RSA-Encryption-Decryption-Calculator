@@ -139,6 +139,13 @@ def accessDB():
 		results = request.form
 
 	return render_template('displayDB.html')
+@app.route('/furtherReading' , methods = ['POST', 'GET'])
+
+
+	if request.mthod == 'POST':
+		results = request.form
+
+
 
 
 

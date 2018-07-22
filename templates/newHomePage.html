@@ -72,8 +72,33 @@
 						d is a number that requires 3 other numbers to solve for. These numbers are p,q, and e.
 						
 						
+						
+						To encrypt information, the process is as follows:
+
+						Take the information from the public key (n, e) and take the number you want to encrypt and plug it into this formula
+
+
 
 						The formula to encrypt is c = m^e mod n
+
+
+
+
+						To decrypt information, the process is as follows:
+
+
+						If we aren't given p or q, we need to crack the public key in order to decrypt the information.
+
+						n is the product of p and q, both of which are prime numbers, so in order to get these numbers we need to crack n.
+						This is very difficult, and is the main reason why RSA encryption is so effective. Because p and q are prime, the only factors of n are p , q and 1, making it extreemely difficult to find those specific numbers. 
+
+
+						After getting p and q, we need to calculate d. This is done using the formuala d e triple bar 1 mod phiN. 
+
+						phiN is calculated by takking the product of (p - 1) * (q - 1)
+
+						after calculating d we can use the following formula to decrypt information:
+
 						The formula to decrypt is m = c^d mod n
 
 
