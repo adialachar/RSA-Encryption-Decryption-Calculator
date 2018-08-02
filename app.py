@@ -5,7 +5,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 db = SQLAlchemy(app)
 import clfunc
-#from clfunc import EncryptionData
+from clfunc import EncryptionData
+from clfunc import DecryptionData
 #from clfunc import cal
 
 
@@ -81,8 +82,8 @@ def encrypt():
 		print(ENC.Emm)
 		print(ENC.Enn)
 		print(ENC.Eee)
-	#db.session.add(ENC)
-	#db.commit()
+		db.session.add(ENC)
+		db.session.commit()
 		isallOk = ENC.isAllOk
 
 		return render_template('encryptData.html', ENC = ENC, isallOk = isAllOk)
@@ -126,26 +127,33 @@ def decrypt():
 
 
 		DEC = clfunc.DecryptionData(p,q,e,c)
-	#db.session.add(DEC)
-	#db.session.commit()	
+		db.session.add(DEC)
+		db.session.commit()	
 		isAllOk = DEC.isAllOk
 
 		return render_template('decryptData.html', DEC = DEC, isAllOk = isAllOk)
 	return render_template('decryptData.html', DEC = DEC, isAllOk = isAllOk)
-@app.route('/accessDB' , methods = ['POST', 'GET'])
-def accessDB():
+#@app.route('/accessDB' , methods = ['POST', 'GET'])
+#def accessDB():
 	
+#	if request.method == 'POST':
+#		results = request.form
+
+#	return render_template('displayDB.html')
+@app.route('/furtherReading' , methods = ['POST', 'GET'])
+def futherReading():
+
 	if request.method == 'POST':
 		results = request.form
 
-	return render_template('displayDB.html')
-@app.route('/furtherReading' , methods = ['POST', 'GET'])
-
-
-	if request.mthod == 'POST':
-		results = request.form
-
-
+@app.route('/accessDB', methods = ['POST', 'GET'])
+def accessDB():
+		
+	#DecData = clfunc.DecryptionData.query.all()
+	#EncData = clfunc.EncryptionData.query.all()
+	DecData = db.session.query("SELECT * FROM DecryptionData")
+	EncData = db.session.query("SELECT * FROM EncryptionData")
+	return render_template('accessDB.html', EncData = EncData, DecData = DecData)
 
 
 
